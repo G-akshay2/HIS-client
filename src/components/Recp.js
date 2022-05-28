@@ -1,8 +1,20 @@
 import React, {useContext, useState, useEffect, useRef} from 'react'
+import { useNavigate } from 'react-router-dom';
 import InfoContext from '../context/details/infoContext'
 import RecpCard from './RecpCard'
 
 const Recp = (props) => {
+    let history = useNavigate();
+    useEffect(() => {
+        if(localStorage.getItem('role')) {
+            var role = localStorage.getItem('role');
+            if(role === 'test') ;
+            else history(`/login`);
+        }
+        else {
+            history('/login');
+        } ;
+    }, [])
     const card = useRef(null);
     const context = useContext(InfoContext)
     const {getPatientByToken} = context;

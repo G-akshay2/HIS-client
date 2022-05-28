@@ -1,19 +1,18 @@
 import React, {useEffect, useContext, useState, useRef} from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import InfoContext from '../context/details/infoContext'
 import PatientCard from './PatientCard'
 
 const Patient = (props) => {
     let history = useNavigate();
-    const location = useLocation();
     useEffect(() => {
         if(localStorage.getItem('role')) {
             var role = localStorage.getItem('role');
             if(role === 'admin') ;
-            else history(`${location.pathname}`);
+            else history('/login');
         }
         else {
-            history(`${location.pathname}`);
+            history('/login');
         } ;
     }, [])
     const [info, setInfo] = useState({branch : "Hyderabad", specality : "Anesthesiologists",  doctorname :  ""});
