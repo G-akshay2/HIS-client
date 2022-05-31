@@ -8,14 +8,15 @@ const LoginForm = (props) => {
         if(localStorage.getItem('role')) {
             var role = localStorage.getItem('role');
             if(role === 'admin') history('/adddoctor');
+            if(role === 'doctor') history('/doctor');
             else history('/recp');
             return;
         }
-        else {
-            const uname =  localStorage.getItem('username')
-            if(uname) history('/doctor');
-            return;
-        } ;
+        // else {
+        //     const uname =  localStorage.getItem('username')
+        //     if(uname) history('/doctor');
+        //     return;
+        // } ;
     }, [])
     const handleSubmit = async (e) => {
         e.preventDefault();
