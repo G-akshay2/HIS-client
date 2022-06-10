@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {useNavigate, useLocation} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = (props) => {
     const [credentials, setCredentials] = useState({username : "", password : ""});
@@ -7,10 +7,9 @@ const LoginForm = (props) => {
     useEffect(() => {
         if(localStorage.getItem('role')) {
             var role = localStorage.getItem('role');
-            if(role === 'admin') history('/adddoctor');
-            if(role === 'doctor') history('/doctor');
-            else history('/recp');
-            return;
+            if(role === 'admin') { history('/adddoctor'); return}
+            if(role === 'doctor') { history('/doctor'); return }
+            else { history('/recp'); return;}
         }
         // else {
         //     const uname =  localStorage.getItem('username')
